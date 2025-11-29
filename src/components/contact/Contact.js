@@ -1,6 +1,7 @@
-import React,{useState} from 'react'
-import Title from '../layouts/Title';
-import ContactLeft from './ContactLeft';
+import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
+import Title from "../layouts/Title";
+import ContactLeft from "./ContactLeft";
 
 const Contact = () => {
   const [username, setUsername] = useState("");
@@ -10,6 +11,7 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const form = useRef();
 
   // ========== Email Validation start here ==============
   const emailValidation = () => {
@@ -34,17 +36,36 @@ const Contact = () => {
     } else if (message === "") {
       setErrMsg("Message is required!");
     } else {
-      setSuccessMsg(
-        `Thank you dear ${username}, Your Messages has been sent Successfully!`
-      );
-      setErrMsg("");
-      setUsername("");
-      setPhoneNumber("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
+      // Send the form using EmailJS (replace the placeholders below)
+      emailjs
+        .sendForm(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID, // e.g. 'service_xxx'
+          process.env.REACT_APP_EMAILJS_TEMPLATE_ID, // e.g. 'template_xxx'
+          form.current,
+          process.env.REACT_APP_EMAILJS_PUBLIC_KEY // e.g. 'user_xxx' or public key
+        )
+        .then(
+          (result) => {
+            setSuccessMsg(
+              `Thank you ${username}, your message was sent successfully!`
+            );
+            setErrMsg("");
+            // clear local state / form fields
+            setUsername("");
+            setPhoneNumber("");
+            setEmail("");
+            setSubject("");
+            setMessage("");
+          },
+          (error) => {
+            setErrMsg("Failed to send message. Please try again later.");
+            setSuccessMsg("");
+            console.error("EmailJS error:", error);
+          }
+        );
     }
   };
+
   return (
     <section
       id="contact"
@@ -57,7 +78,11 @@ const Contact = () => {
         <div className="w-full h-auto flex flex-col lgl:flex-row justify-between">
           <ContactLeft />
           <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[#1e2024] to-[#23272b] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-shadowOne">
-            <form className="w-full flex flex-col gap-4 lgl:gap-6 py-2 lgl:py-5">
+            <form
+              className="w-full flex flex-col gap-4 lgl:gap-6 py-2 lgl:py-5"
+              ref={form}
+              onSubmit={handleSend}
+            >
               {errMsg && (
                 <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
                   {errMsg}
@@ -74,6 +99,7 @@ const Contact = () => {
                     Your name
                   </p>
                   <input
+                    name="user_name"
                     onChange={(e) => setUsername(e.target.value)}
                     value={username}
                     className={`${
@@ -88,6 +114,7 @@ const Contact = () => {
                     Phone Number
                   </p>
                   <input
+                    name="phone"
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     value={phoneNumber}
                     className={`${
@@ -103,6 +130,7 @@ const Contact = () => {
                   Email
                 </p>
                 <input
+                  name="user_email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   className={`${
@@ -117,6 +145,7 @@ const Contact = () => {
                   Subject
                 </p>
                 <input
+                  name="subject"
                   onChange={(e) => setSubject(e.target.value)}
                   value={subject}
                   className={`${
@@ -131,6 +160,7 @@ const Contact = () => {
                   Message
                 </p>
                 <textarea
+                  name="message"
                   onChange={(e) => setMessage(e.target.value)}
                   value={message}
                   className={`${
@@ -142,7 +172,7 @@ const Contact = () => {
               </div>
               <div className="w-full">
                 <button
-                  onClick={handleSend}
+                  type="submit"
                   className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-transparent"
                 >
                   Send Message
@@ -164,6 +194,6 @@ const Contact = () => {
       </div>
     </section>
   );
-}
+};
 
-export default Contact
+export default Contact;
