@@ -121,7 +121,9 @@ const Contact = () => {
                       errMsg === "Phone number is required!" &&
                       "outline-designColor"
                     } contactInput`}
-                    type="text"
+                    type="tel"
+                    pattern="[0-9]*"
+                    inputMode="numeric"
                   />
                 </div>
               </div>
