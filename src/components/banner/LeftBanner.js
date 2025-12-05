@@ -34,9 +34,7 @@ const LeftBanner = () => {
           />
         </h2>
         <p className="text-base font-bodyFont leading-6 tracking-wide">
-          I use animation as a third dimension by which to simplify experiences
-          and kuiding thro each and every interaction. I'm not adding motion
-          just to spruce things up, but doing it in ways that.
+          I’m Abhinav Karn, a frontend developer from New Delhi with a strong focus on creating clean, user-friendly web and mobile experiences. I work with React.js, React Native, TypeScript, and modern           UI practices, and I enjoy solving complex problems with simple, effective solutions. I’ve built real-world projects ranging from web apps to mobile apps and even an AI-powered hexacopter drone.           With a solid foundation in DSA, Linux, and engineering principles, I love turning ideas into polished, production-ready products.
         </p>
       </div>
       <div className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between">
