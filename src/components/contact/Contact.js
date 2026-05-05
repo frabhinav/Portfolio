@@ -3,6 +3,10 @@ import { useRef, useState } from "react";
 import Title from "../layouts/Title";
 import ContactLeft from "./ContactLeft";
 
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
 const Contact = () => {
   const [username, setUsername] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -32,13 +36,22 @@ const Contact = () => {
       setErrMsg("Please give your Subject!");
     } else if (message === "") {
       setErrMsg("Message is required!");
+    } else if (
+      !EMAILJS_SERVICE_ID ||
+      !EMAILJS_TEMPLATE_ID ||
+      !EMAILJS_PUBLIC_KEY
+    ) {
+      setErrMsg(
+        "Contact form is missing EmailJS settings. Add REACT_APP_EMAILJS_SERVICE_ID, REACT_APP_EMAILJS_TEMPLATE_ID, and REACT_APP_EMAILJS_PUBLIC_KEY to a .env file in the project root (see .env.example), then restart the dev server or rebuild."
+      );
+      setSuccessMsg("");
     } else {
       emailjs
         .sendForm(
-          process.env.REACT_APP_EMAILJS_SERVICE_ID,
-          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
           form.current,
-          process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+          EMAILJS_PUBLIC_KEY
         )
         .then(
           () => {
@@ -53,8 +66,14 @@ const Contact = () => {
             setMessage("");
           },
           (error) => {
-            setErrMsg("Failed to send message. Please try again later.");
             setSuccessMsg("");
+            const apiHint =
+              process.env.NODE_ENV === "development" && error?.text
+                ? ` ${error.text}`
+                : "";
+            setErrMsg(
+              `Failed to send message. Please try again later.${apiHint}`
+            );
             console.error("EmailJS error:", error);
           }
         );
