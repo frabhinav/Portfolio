@@ -25,10 +25,9 @@ const item = {
 const LeftBanner = () => {
   const [text] = useTypewriter({
     words: [
-      "Full Stack Developer.",
-      "React Native & Next.js.",
-      "Node, Express & MongoDB.",
-      "AI-Integrated Products.",
+      "Frontend Developer.",
+      "Mobile App Developer",
+      "Performance-Oriented Engineer",
     ],
     loop: true,
     typeSpeed: 28,
@@ -63,7 +62,7 @@ const LeftBanner = () => {
           variants={item}
           className="font-titleFont text-2xl font-semibold text-slate-200 sm:text-3xl lg:text-4xl"
         >
-          I build{" "}
+          {" "}
           <span className="text-white">
             {text}
             <Cursor cursorBlinking={false} cursorStyle="|" cursorColor="#22d3ee" />
