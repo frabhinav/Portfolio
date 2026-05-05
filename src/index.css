@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  ::selection {
+    @apply bg-accent-violet/[0.3] text-white;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply rounded-2xl border border-white/[0.08] bg-white/[0.03] shadow-innerGlow backdrop-blur-xl;
+  }
+
+  .glass-panel-strong {
+    @apply rounded-2xl border border-white/[0.12] bg-white/[0.06] backdrop-blur-2xl;
+  }
+
+  .glass-nav {
+    @apply border border-white/[0.08] bg-ink/70 shadow-glow-sm backdrop-blur-2xl;
+  }
+
+  .btn-glass {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl border border-white/[0.15] bg-white/[0.08] px-8 py-3.5 font-titleFont text-sm font-semibold uppercase tracking-widest text-white shadow-innerGlow backdrop-blur-md transition-all duration-300;
+    @apply hover:border-accent-cyan/[0.4] hover:bg-white/[0.12] hover:shadow-glow-sm active:scale-[0.98];
+  }
+
+  .btn-glass-primary {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl border border-accent-violet/[0.4] bg-gradient-to-r from-accent-violet/[0.25] to-accent-cyan/[0.2] px-8 py-3.5 font-titleFont text-sm font-semibold uppercase tracking-widest text-white shadow-glow transition-all duration-300;
+    @apply hover:border-accent-cyan/[0.5] hover:shadow-glow active:scale-[0.98];
+  }
+
+  .bannerIcon {
+    @apply inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border border-white/[0.1] bg-white/[0.05] text-xl text-slate-300 shadow-innerGlow backdrop-blur-md transition-all duration-300;
+    @apply hover:-translate-y-0.5 hover:border-accent-violet/[0.35] hover:bg-white/[0.1] hover:text-white hover:shadow-glow-sm;
+  }
+
+  .resumeLi {
+    @apply flex h-16 w-full cursor-pointer items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] text-base font-medium text-slate-400 shadow-innerGlow backdrop-blur-md transition-all duration-300;
+    @apply hover:border-white/[0.1] hover:bg-white/[0.06] hover:text-white md:h-20 md:text-lg;
+  }
+
+  .resumeLiActive {
+    @apply border-accent-violet/[0.5] bg-gradient-to-br from-accent-violet/[0.15] to-accent-cyan/[0.1] text-white shadow-glow-sm;
+  }
+
+  .bgOpacity {
+    @apply bg-white/[0.08];
+  }
+
+  .contactInput {
+    @apply h-12 w-full rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 text-lightText shadow-inner backdrop-blur-sm outline-none transition-all duration-300;
+    @apply placeholder:text-muted focus:border-accent-cyan/[0.4] focus:ring-2 focus:ring-accent-cyan/[0.2];
+  }
+
+  .contactTextArea {
+    @apply w-full resize-none rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-lightText shadow-inner backdrop-blur-sm outline-none transition-all duration-300;
+    @apply placeholder:text-muted focus:border-accent-cyan/[0.4] focus:ring-2 focus:ring-accent-cyan/[0.2];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-accent-violet to-accent-cyan bg-clip-text text-transparent;
+  }
+
+  .section-divider {
+    @apply border-b border-white/[0.06];
+  }
+
+  .active {
+    @apply text-white;
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
