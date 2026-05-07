@@ -18,20 +18,20 @@ const Projects = () => {
         <Title title="Selected work" des="Projects" />
       </div>
       <p className="mx-auto mb-14 max-w-2xl text-center font-bodyFont text-slate-400">
-        Highlights from my resume — full-stack apps, 3D web, and native mobile.
+        Highlights from my resume full-stack apps, 3D web, and native mobile.
         GitHub points to my profile; swap in per-repo links anytime.
       </p>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-2 xl:gap-10">
         <ProjectsCard
           title="AI technical interview platform"
-          des="100+ interview sessions — Gemini API for question generation and real-time evaluation (~95%+ accuracy). JWT-secured Express/MongoDB backend; ~35% lower latency via MongoDB query tuning. React, Vite, SCSS."
+          des="100+ interview sessions Gemini API for question generation and real-time evaluation (95%+ accuracy). JWT-secured Express/MongoDB backend; 35% lower latency via MongoDB query tuning. React, Vite, SCSS."
           src={projectOne}
           githubLink="https://github.com/frabhinav/interview-ai"
           techLine="React · Node · Express · MongoDB · Gemini API · JWT"
         />
         <ProjectsCard
           title="3D web experience"
-          des="Interactive 3D sections with React Three Fiber and GSAP — ~60 FPS, ~30% faster load after optimization. Immersive transitions and performance-focused rendering."
+          des="Interactive 3D sections with React Three Fiber and GSAP 60 FPS, 30% faster load after optimization. Immersive transitions and performance-focused rendering."
           src={projectTwo}
           githubLink="https://github.com/frabhinav/gsap-dog"
           liveLink="https://gsap-dog.vercel.app/"
@@ -47,7 +47,7 @@ const Projects = () => {
         />
         <ProjectsCard
           title="AI hexacopter — crop disease detection"
-          des="Raspberry Pi + MobileNet for real-time crop disease detection — pilot work reducing pesticide use and inspection time. Computer vision and edge ML pipeline."
+          des="Raspberry Pi + MobileNet for real-time crop disease detection pilot work reducing pesticide use and inspection time. Computer vision and edge ML pipeline."
           src={projectFour}
           techLine="Python · Raspberry Pi · MobileNet · CV"
         />
