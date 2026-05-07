@@ -23,7 +23,7 @@ const Education = () => {
             title="B.Tech in Computer Science & Engineering"
             subTitle="VIT Bhopal University · Jul 2021 – Nov 2025"
             result="8.24 / 10.0"
-            des="Degree-focused training in computing fundamentals, software engineering, and systems — foundation for full-stack and mobile work."
+            des="Degree focused training in computing fundamentals, software engineering, and systems foundation."
           />
         </div>
       </div>
