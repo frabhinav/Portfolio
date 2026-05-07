@@ -74,8 +74,8 @@ const LeftBanner = () => {
           className="max-w-xl font-bodyFont text-base leading-relaxed text-slate-400 sm:text-lg"
         >
           Full stack developer with 1+ year shipping scalable web and mobile
-          apps — React Native, Next.js, Node.js, MongoDB. I&apos;ve built a
-          production sports platform (25+ sports, 50+ screens, ~40% perf gain),
+          apps React Native, Next.js, Node.js, MongoDB. I&apos;ve built a
+          production sports platform (25+ sports, 50+ screens, 70% perf gain),
           50+ releases with zero deployment failures, and Gen AI features in
           production. Strong on REST, JWT, and CI/CD.
         </motion.p>
